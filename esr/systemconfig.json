@@ -1,0 +1,98 @@
+{
+   "systemname": "serviceregistrar",
+   "unit_assets": [
+      {
+         "name": "registry",
+         "details": {
+            "Location": [
+               "LocalCloud"
+            ]
+         }
+      }
+   ],
+   "services": [
+      {
+         "definition": "register",
+         "details": {
+            "Forms": [
+               "ServiceRecord_v1"
+            ]
+         },
+         "registrationPeriod": 0,
+         "costUnit": ""
+      },
+      {
+         "definition": "query",
+         "details": {
+            "Forms": [
+               "ServiceQuest_v1",
+               "ServicePoint_v1"
+            ]
+         },
+         "registrationPeriod": 0,
+         "costUnit": ""
+      },
+      {
+         "definition": "unregister",
+         "details": {
+            "Forms": [
+               "ID_only"
+            ]
+         },
+         "registrationPeriod": 0,
+         "costUnit": ""
+      },
+      {
+         "definition": "status",
+         "details": {
+            "Forms": [
+               "none"
+            ]
+         },
+         "registrationPeriod": 0,
+         "costUnit": ""
+      }
+   ],
+   "protocolsNports": {
+      "coap": 0,
+      "http": 20102,
+      "https": 0
+   },
+   "distinguishedName": {
+      "Country": [
+         "SE"
+      ],
+      "Organization": [
+         "Luleaa University of Technology"
+      ],
+      "OrganizationalUnit": [
+         "CPS"
+      ],
+      "Locality": [
+         "Luleaa"
+      ],
+      "Province": [
+         "Norrbotten"
+      ],
+      "StreetAddress": null,
+      "PostalCode": null,
+      "SerialNumber": "",
+      "CommonName": "arrowhead.eu",
+      "Names": null,
+      "ExtraNames": null
+   },
+   "coreSystems": [
+      {
+         "coresystem": "serviceregistrar",
+         "url": "http://localhost:20102/serviceregistrar/registry"
+      },
+      {
+         "coresystem": "orchestrator",
+         "url": "http://orchestrator:20103/orchestrator/orchestration"
+      },
+      {
+     "coresystem": "ca",
+         "url": "http://localhost:20100/ca/certification"
+      }
+   ]
+}
