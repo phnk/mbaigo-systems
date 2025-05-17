@@ -1,7 +1,21 @@
-version: '3.8'
-
 services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:2
+    ports:
+      - 8086:8086
+    volumes:
+      - type: volume
+        source: influxdb2-data
+        target: /var/lib/influxdb2
+      - type: volume
+        source: influxdb2-config
+        target: /etc/influxdb2
+
   esr:
+    container_name: esr
+    depends_on: 
+      - influxdb
     build:
       context: ./esr
       dockerfile: Dockerfile
@@ -11,6 +25,9 @@ services:
       - backend
 
   orchestrator:
+    container_name: orch
+    depends_on: 
+      - influxdb
     build:
       context: ./orchestrator
       dockerfile: Dockerfile
@@ -22,3 +39,7 @@ services:
 networks:
   backend:
     driver: bridge
+
+volumes:
+  influxdb2-data:
+  influxdb2-config:
